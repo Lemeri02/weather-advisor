@@ -1,5 +1,4 @@
 class Cart
-
   def initialize(params)
     @name = params[:name]
     @type = params[:type]

@@ -24,7 +24,7 @@ if user_input == 1
   puts 'Введите название шмотки'
   garment_name = STDIN.gets.chomp
 
-  puts "Введите тип шмотки (например, уже имеющиеся: #{wardrobe.type.join(", ")} )"
+  puts "Введите тип шмотки (например, уже имеющиеся: #{wardrobe.type.join(', ')})"
   garment_type = STDIN.gets.chomp
 
   puts 'Введите первую температуру (например: +20 или -30 )'
