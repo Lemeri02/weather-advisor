@@ -10,12 +10,12 @@ class Wardrobe
     @garments = garments
   end
 
-  def type
+  def types
     @garments.map(&:type).uniq
   end
 
   def select_garment_by_type(temp)
-    @garments.map(&:type).uniq.map do |type|
+    types.map do |type|
       garments_for_dress(temp).select { |item| item.type == type }.sample
     end.compact
   end
@@ -24,7 +24,7 @@ class Wardrobe
     @garments.select { |item| item.can_it_wear?(temp) }
   end
 
-  def add_garment(params)
-    puts params
+  def include_garment?(name)
+    @garments.map { |garment| garment.name.downcase }.include?(name.downcase)
   end
 end

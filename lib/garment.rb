@@ -23,6 +23,6 @@ class Garment
   end
 
   def to_s
-    "#{name} (#{type}) #{first_temp}..#{last_temp}"
+    "#{name.sub(name[0], name[0].upcase)} (#{type.sub(type[0], type[0].upcase)}) #{first_temp}..#{last_temp}"
   end
 end

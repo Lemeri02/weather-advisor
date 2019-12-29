@@ -16,7 +16,7 @@ else
   puts selected_garment
 end
 
-puts 'Пополнить гардероб? (1 - Да, Любой символ - Нет)'
+puts 'Пополнить гардероб? (1 - "Да", Любой символ или Enter - "Нет")'
 
 user_input = STDIN.gets.to_i
 
@@ -24,24 +24,26 @@ if user_input == 1
   puts 'Введите название шмотки'
   garment_name = STDIN.gets.chomp
 
-  puts "Введите тип шмотки (например, уже имеющиеся: #{wardrobe.type.join(', ')})"
-  garment_type = STDIN.gets.chomp
+  if wardrobe.include_garment?(garment_name)
+    puts 'У вас уже есть такая шмотка'
+  else
+    puts "Введите тип шмотки (например, уже имеющиеся: #{wardrobe.types.join(', ')})"
+    garment_type = STDIN.gets.chomp
 
-  puts 'Введите первую температуру (например: +20 или -30 )'
-  temp_first = STDIN.gets.to_i
+    puts 'Введите первую температуру (например: +20 или -30 )'
+    temp_first = STDIN.gets.to_i
 
-  puts 'Введите вторую температуру (например: +20 или -30 )'
-  temp_last = STDIN.gets.to_i
+    puts 'Введите вторую температуру (например: +20 или -30 )'
+    temp_last = STDIN.gets.to_i
 
-  new_garment = Cart.new(
-    name: garment_name,
-    type: garment_type,
-    temp_range: [temp_first, temp_last].sort,
-    wardrobe: wardrobe
-  )
-
-  puts 'У вас уже есть такая шмотка' if new_garment.check
-  puts 'Гардероб пополнен' unless new_garment.check
+    Cart.new(
+      name: garment_name,
+      type: garment_type,
+      temp_range: [temp_first, temp_last].sort,
+      wardrobe: wardrobe
+    )
+    puts 'Гардероб пополнен'
+  end
 end
 
 puts 'Удачи!'

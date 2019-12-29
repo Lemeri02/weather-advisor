@@ -4,11 +4,7 @@ class Cart
     @type = params[:type]
     @temp_range = params[:temp_range]
     @wardrobe = params[:wardrobe]
-    add_garment unless check
-  end
-
-  def check
-    @wardrobe.garments.map(&:name).include?(@name)
+    add_garment
   end
 
   def add_garment
