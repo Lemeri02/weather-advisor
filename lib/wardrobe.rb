@@ -14,6 +14,10 @@ class Wardrobe
     @garments.map(&:type).uniq
   end
 
+  def names
+    @garments.map(&:name)
+  end
+
   def select_garment_by_type(temp)
     types.map do |type|
       garments_for_dress(temp).select { |item| item.type == type }.sample

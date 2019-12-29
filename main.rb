@@ -21,7 +21,7 @@ puts 'Пополнить гардероб? (1 - "Да", Любой символ 
 user_input = STDIN.gets.to_i
 
 if user_input == 1
-  puts 'Введите название шмотки'
+  puts "Введите название шмотки (Вот что имеется у вас: #{wardrobe.names.join(', ')})."
   garment_name = STDIN.gets.chomp
 
   if wardrobe.include_garment?(garment_name)
