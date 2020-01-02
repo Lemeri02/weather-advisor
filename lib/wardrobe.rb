@@ -10,8 +10,12 @@ class Wardrobe
     @garments = garments
   end
 
-  def types
-    @garments.map(&:type).uniq
+  def garments_for_dress(temp)
+    @garments.select { |item| item.can_it_wear?(temp) }
+  end
+
+  def include_garment?(name)
+    @garments.map { |garment| garment.name.downcase }.include?(name.downcase)
   end
 
   def names
@@ -24,11 +28,7 @@ class Wardrobe
     end.compact
   end
 
-  def garments_for_dress(temp)
-    @garments.select { |item| item.can_it_wear?(temp) }
-  end
-
-  def include_garment?(name)
-    @garments.map { |garment| garment.name.downcase }.include?(name.downcase)
+  def types
+    @garments.map(&:type).uniq
   end
 end

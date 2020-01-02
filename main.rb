@@ -1,6 +1,6 @@
 require_relative 'lib/garment'
 require_relative 'lib/wardrobe'
-require_relative 'lib/cart'
+require_relative 'lib/garment-adder'
 
 file_path = Dir["#{__dir__}/data/*.txt"]
 wardrobe = Wardrobe.get_garment(file_path)
@@ -36,7 +36,7 @@ if user_input == 1
     puts 'Введите вторую температуру (например: +20 или -30 )'
     temp_last = STDIN.gets.to_i
 
-    Cart.new(
+    GarmentAdder.add_garment(
       name: garment_name,
       type: garment_type,
       temp_range: [temp_first, temp_last].sort,
